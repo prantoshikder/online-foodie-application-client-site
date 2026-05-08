@@ -1,0 +1,28 @@
+{
+  "name": "Foodie — Delicious Delivered",
+  "short_name": "Foodie",
+  "description": "Order food from the best restaurants near you. Fast delivery, exclusive deals, and a huge variety of cuisines.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "lang": "en",
+  "categories": ["food", "lifestyle", "shopping"],
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "any",
+      "type": "image/x-icon",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/opengraph-image",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "label": "Foodie home screen"
+    }
+  ]
+}
