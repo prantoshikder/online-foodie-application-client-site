@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function HeroBanner() {
   return (
     <div
@@ -27,10 +29,13 @@ export default function HeroBanner() {
 
         {/* Image */}
         <div className="w-80 h-52 shrink-0 relative">
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&q=80"
             alt="Burger"
-            className="w-full h-full object-cover rounded-3xl"
+            fill
+            className="object-cover rounded-3xl"
+            sizes="320px"
+            priority
           />
         </div>
       </div>

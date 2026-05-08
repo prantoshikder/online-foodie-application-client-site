@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
+import Image from "next/image";
 import {
   Search,
   X,
@@ -324,11 +325,13 @@ export default function SearchContainer() {
                       key={dish.id}
                       className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow shrink-0 w-44 cursor-pointer"
                     >
-                      <div className="relative">
-                        <img
+                      <div className="relative h-32">
+                        <Image
                           src={dish.image}
                           alt={dish.name}
-                          className="w-full h-32 object-cover"
+                          fill
+                          className="object-cover"
+                          sizes="176px"
                         />
                         {dish.bestseller && (
                           <span className="absolute top-2 left-2 bg-green-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-lg">
@@ -430,10 +433,12 @@ export default function SearchContainer() {
                       key={c.id}
                       className="relative rounded-2xl overflow-hidden shrink-0 w-52 h-36 cursor-pointer group"
                     >
-                      <img
+                      <Image
                         src={c.image}
                         alt={c.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        sizes="208px"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
                       <div className="absolute bottom-3 left-3">

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
+import Image from "next/image";
 import {
   Bell,
   ChevronDown,
@@ -333,11 +334,13 @@ function OfferCardsRow({
               key={offer.id}
               className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow shrink-0 w-52"
             >
-              <div className="relative">
-                <img
+              <div className="relative h-32">
+                <Image
                   src={offer.image}
                   alt={offer.restaurant}
-                  className="w-full h-32 object-cover"
+                  fill
+                  className="object-cover"
+                  sizes="208px"
                 />
                 <span
                   className={`absolute bottom-3 left-3 ${offer.badgeColor} text-white text-[11px] font-bold px-2 py-0.5 rounded-lg`}
@@ -352,10 +355,12 @@ function OfferCardsRow({
                 <div className="flex items-center gap-2 mb-2">
                   {offer.logo && (
                     <div className="w-7 h-7 rounded-lg overflow-hidden bg-orange-50 shrink-0">
-                      <img
+                      <Image
                         src={offer.logo}
                         alt={offer.restaurant}
-                        className="w-full h-full object-cover"
+                        width={28}
+                        height={28}
+                        className="object-cover"
                       />
                     </div>
                   )}

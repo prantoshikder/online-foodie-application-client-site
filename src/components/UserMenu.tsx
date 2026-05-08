@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import {
   ChevronDown,
   ChevronRight,
@@ -60,11 +61,14 @@ export default function UserMenu() {
         onClick={() => setOpen((v) => !v)}
         className={`flex items-center gap-2 px-3 py-2 rounded-2xl border transition-colors ${open ? "bg-orange-50 border-orange-200" : "border-transparent hover:bg-gray-100"}`}
       >
-        <div className="w-9 h-9 rounded-full overflow-hidden bg-gray-200 ring-2 ring-orange-200">
-          <img
+        <div className="relative w-9 h-9 rounded-full overflow-hidden bg-gray-200 ring-2 ring-orange-200">
+          <Image
             src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
             alt="Arjun"
-            className="w-full h-full object-cover"
+            fill
+            className="object-cover"
+            priority
+            unoptimized
           />
         </div>
         <div className="flex items-center gap-1">
@@ -90,11 +94,14 @@ export default function UserMenu() {
               <X size={12} className="text-white" />
             </button>
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 rounded-xl overflow-hidden ring-2 ring-white/40">
-                <img
+              <div className="relative w-12 h-12 rounded-xl overflow-hidden ring-2 ring-white/40">
+                <Image
                   src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
                   alt="Arjun"
-                  className="w-full h-full object-cover bg-orange-200"
+                  fill
+                  className="object-cover bg-orange-200"
+                  priority
+                  unoptimized
                 />
               </div>
               <div>

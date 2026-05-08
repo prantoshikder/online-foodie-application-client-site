@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   Home,
@@ -33,7 +34,7 @@ export default function Sidebar() {
     <aside className="w-52 bg-white h-full flex flex-col py-6 px-4 shadow-sm shrink-0">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 mb-8 px-2">
-        <img src="/logo.svg" alt="Foodie" className="w-9 h-9" />
+        <Image src="/logo.svg" alt="Foodie" width={36} height={36} />
         <div>
           <div className="font-bold text-gray-900 text-base leading-tight">Foodie</div>
           <div className="text-gray-400 text-[10px]">Delicious delivered</div>

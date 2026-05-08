@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Heart, Star } from "lucide-react";
+import Image from "next/image";
 
 interface Restaurant {
   name: string;
@@ -18,8 +19,14 @@ export default function RestaurantCard({ restaurant }: { restaurant: Restaurant 
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
-      <div className="relative">
-        <img src={restaurant.image} alt={restaurant.name} className="w-full h-36 object-cover" />
+      <div className="relative h-36">
+        <Image
+          src={restaurant.image}
+          alt={restaurant.name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+        />
         <span className="absolute top-3 left-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-lg">
           {restaurant.discount}
         </span>

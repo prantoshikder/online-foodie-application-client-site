@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import HeroSlider from "@/components/HeroSlider";
 import { Bike, Copy, Crown, Heart, Star } from "lucide-react";
 import { useState } from "react";
+import Image from "next/image";
 
 /* ─── DATA ──────────────────────────────────────────────── */
 
@@ -173,8 +174,14 @@ export default function LandingPageContainer() {
                   key={r.id}
                   className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer"
                 >
-                  <div className="relative">
-                    <img src={r.image} alt={r.name} className="w-full h-32 object-cover" />
+                  <div className="relative h-32">
+                    <Image
+                      src={r.image}
+                      alt={r.name}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 50vw, 25vw"
+                    />
                     <span
                       className={`absolute top-2.5 left-2.5 ${r.badgeColor} text-white text-[10px] font-bold px-2 py-0.5 rounded-md`}
                     >
@@ -241,10 +248,12 @@ export default function LandingPageContainer() {
             <div className="flex flex-col gap-3 mb-4">
               {orderItems.map((item) => (
                 <div key={item.name} className="flex items-center gap-3">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
-                    className="w-11 h-11 rounded-xl object-cover shrink-0"
+                    width={44}
+                    height={44}
+                    className="rounded-xl object-cover shrink-0"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-gray-800 text-xs truncate">{item.name}</div>

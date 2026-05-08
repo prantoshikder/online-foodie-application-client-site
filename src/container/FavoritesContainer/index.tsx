@@ -4,6 +4,7 @@ import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
 import { Bell, ChevronDown, ChevronRight, Heart, MoreVertical, Plus, Star } from "lucide-react";
 import UserMenu from "@/components/UserMenu";
+import Image from "next/image";
 
 const tabs = ["Restaurants", "Dishes"];
 
@@ -183,8 +184,14 @@ export default function FavoritesContainer() {
                     key={r.id}
                     className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow shrink-0 w-52"
                   >
-                    <div className="relative">
-                      <img src={r.image} alt={r.name} className="w-full h-36 object-cover" />
+                    <div className="relative h-36">
+                      <Image
+                        src={r.image}
+                        alt={r.name}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
                       <button
                         onClick={() => toggleRestaurant(r.id)}
                         className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm"
@@ -202,7 +209,13 @@ export default function FavoritesContainer() {
                     <div className="p-3">
                       <div className="flex items-center gap-2 mb-1">
                         <div className="w-8 h-8 rounded-lg overflow-hidden bg-orange-100 shrink-0">
-                          <img src={r.logo} alt={r.name} className="w-full h-full object-cover" />
+                          <Image
+                            src={r.logo}
+                            alt={r.name}
+                            width={32}
+                            height={32}
+                            className="object-cover"
+                          />
                         </div>
                         <div>
                           <div className="font-bold text-gray-900 text-xs leading-tight">
@@ -235,10 +248,12 @@ export default function FavoritesContainer() {
               {dishes.map((dish) => (
                 <div key={dish.id} className="flex items-center gap-4 p-4">
                   <div className="relative shrink-0">
-                    <img
+                    <Image
                       src={dish.image}
                       alt={dish.name}
-                      className="w-20 h-20 rounded-xl object-cover"
+                      width={80}
+                      height={80}
+                      className="rounded-xl object-cover"
                     />
                     <button
                       onClick={() => toggleDish(dish.id)}
@@ -306,7 +321,13 @@ export default function FavoritesContainer() {
                   className="flex items-center gap-3 hover:bg-gray-50 rounded-xl p-1.5 -mx-1.5 transition-colors w-full text-left"
                 >
                   <div className="w-12 h-12 rounded-xl overflow-hidden shrink-0 bg-orange-50">
-                    <img src={c.image} alt={c.name} className="w-full h-full object-cover" />
+                    <Image
+                      src={c.image}
+                      alt={c.name}
+                      width={48}
+                      height={48}
+                      className="object-cover"
+                    />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-gray-800 text-xs">{c.name}</div>
@@ -324,10 +345,12 @@ export default function FavoritesContainer() {
             <div className="flex flex-col gap-3">
               {suggestions.map((item) => (
                 <div key={item.name} className="flex items-center gap-3">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
-                    className="w-12 h-12 rounded-xl object-cover shrink-0"
+                    width={48}
+                    height={48}
+                    className="rounded-xl object-cover shrink-0"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-gray-800 text-xs truncate">{item.name}</div>

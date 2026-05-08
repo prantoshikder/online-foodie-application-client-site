@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import Image from "next/image";
 
 const slides = [
   {
@@ -70,12 +71,15 @@ export default function HeroSlider() {
     <div className="relative rounded-3xl overflow-hidden mb-6 min-h-52.5">
       {/* All slide images stacked — crossfade via opacity, no unmount */}
       {slides.map((s, i) => (
-        <img
+        <Image
           key={s.id}
           src={s.image}
           alt={s.imageAlt}
-          className="absolute inset-0 w-full h-full object-cover transition-opacity duration-700"
+          fill
+          className="object-cover transition-opacity duration-700"
           style={{ opacity: i === current ? 1 : 0 }}
+          sizes="100vw"
+          priority={i === 0}
         />
       ))}
 

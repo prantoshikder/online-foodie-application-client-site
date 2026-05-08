@@ -1,6 +1,7 @@
 "use client";
 
 import { Bike, Copy } from "lucide-react";
+import Image from "next/image";
 
 const orderItems = [
   {
@@ -63,7 +64,13 @@ export default function OrderSidebar() {
         <div className="flex flex-col gap-3 mb-4">
           {orderItems.map((item) => (
             <div key={item.name} className="flex items-center gap-3">
-              <img src={item.image} alt={item.name} className="w-11 h-11 rounded-xl object-cover" />
+              <Image
+                src={item.image}
+                alt={item.name}
+                width={44}
+                height={44}
+                className="rounded-xl object-cover"
+              />
               <div className="flex-1 min-w-0">
                 <div className="font-semibold text-gray-800 text-xs truncate">{item.name}</div>
                 <div className="text-gray-400 text-[11px]">{item.size}</div>

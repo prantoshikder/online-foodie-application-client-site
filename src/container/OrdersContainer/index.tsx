@@ -4,6 +4,7 @@ import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
 import UserMenu from "@/components/UserMenu";
 import { Bell, MapPin, MoreVertical, Phone, MessageSquare, Star, Plus } from "lucide-react";
+import Image from "next/image";
 
 const tabs = ["All Orders", "Ongoing", "Completed", "Cancelled"];
 
@@ -126,10 +127,12 @@ export default function OrdersContainer() {
               {ongoingOrders.map((order) => (
                 <div key={order.id} className="bg-white rounded-2xl p-5 shadow-sm">
                   <div className="flex items-start gap-4">
-                    <img
+                    <Image
                       src={order.image}
                       alt={order.restaurant}
-                      className="w-20 h-20 rounded-xl object-cover shrink-0"
+                      width={80}
+                      height={80}
+                      className="rounded-xl object-cover shrink-0"
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex items-start justify-between mb-1">
@@ -223,10 +226,12 @@ export default function OrdersContainer() {
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden divide-y divide-gray-50">
                 {completedOrders.map((order) => (
                   <div key={order.id} className="flex items-center gap-4 p-4">
-                    <img
+                    <Image
                       src={order.image}
                       alt={order.restaurant}
-                      className="w-14 h-14 rounded-xl object-cover shrink-0"
+                      width={56}
+                      height={56}
+                      className="rounded-xl object-cover shrink-0"
                     />
                     <div className="flex-1 min-w-0">
                       <div className="font-bold text-gray-900 text-sm">{order.restaurant}</div>
@@ -265,10 +270,12 @@ export default function OrdersContainer() {
               <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
                 {cancelledOrders.map((order) => (
                   <div key={order.id} className="flex items-center gap-4 p-4">
-                    <img
+                    <Image
                       src={order.image}
                       alt={order.restaurant}
-                      className="w-14 h-14 rounded-xl object-cover shrink-0"
+                      width={56}
+                      height={56}
+                      className="rounded-xl object-cover shrink-0"
                     />
                     <div className="flex-1 min-w-0">
                       <div className="font-bold text-gray-900 text-sm">{order.restaurant}</div>
@@ -346,10 +353,12 @@ export default function OrdersContainer() {
             </div>
             <div className="p-4">
               <div className="flex items-center gap-3 mb-3">
-                <img
+                <Image
                   src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=80&q=80"
                   alt="Burger House"
-                  className="w-10 h-10 rounded-xl object-cover shrink-0"
+                  width={40}
+                  height={40}
+                  className="rounded-xl object-cover shrink-0"
                 />
                 <div className="flex-1 min-w-0">
                   <div className="font-bold text-gray-900 text-xs">Burger House</div>
@@ -424,10 +433,12 @@ export default function OrdersContainer() {
             <div className="flex flex-col gap-3">
               {suggestions.map((item) => (
                 <div key={item.name} className="flex items-center gap-3">
-                  <img
+                  <Image
                     src={item.image}
                     alt={item.name}
-                    className="w-12 h-12 rounded-xl object-cover shrink-0"
+                    width={48}
+                    height={48}
+                    className="rounded-xl object-cover shrink-0"
                   />
                   <div className="flex-1 min-w-0">
                     <div className="font-semibold text-gray-800 text-xs truncate">{item.name}</div>

@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
+import Image from "next/image";
 import {
   Camera,
   Bell,
@@ -96,11 +97,14 @@ export default function ProfileContainer() {
             <div className="relative flex items-center gap-5">
               {/* Avatar */}
               <div className="relative shrink-0">
-                <div className="w-20 h-20 rounded-2xl overflow-hidden border-3 border-white/40 shadow-lg">
-                  <img
+                <div className="relative w-20 h-20 rounded-2xl overflow-hidden border-3 border-white/40 shadow-lg">
+                  <Image
                     src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
                     alt="Arjun"
-                    className="w-full h-full object-cover bg-orange-200"
+                    fill
+                    className="object-cover bg-orange-200"
+                    priority
+                    unoptimized
                   />
                 </div>
                 <button className="absolute -bottom-1 -right-1 w-7 h-7 bg-white rounded-xl flex items-center justify-center shadow-md hover:scale-110 transition-transform">
