@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import ProfileContainer from "@/container/ProfileContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "My Profile",
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "My Profile | Foodie",
     description: "Manage your Foodie account and preferences.",
-    url: "https://foodie.app/profile",
+    url: "https://foodie-online.vercel.app/profile",
   },
 };
 

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import SupportContainer from "@/container/SupportContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Help & Support",
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     title: "Help & Support | Foodie",
     description:
       "Get help with your orders. Browse FAQs, chat live, or contact us via phone and email.",
-    url: "https://foodie.app/support",
+    url: "https://foodie-online.vercel.app/support",
   },
   twitter: {
     title: "Help & Support | Foodie",

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import WalletContainer from "@/container/WalletContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Wallet",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Wallet | Foodie",
     description: "Manage your Foodie wallet balance, view transaction history, and track cashback.",
-    url: "https://foodie.app/wallet",
+    url: "https://foodie-online.vercel.app/wallet",
   },
   twitter: {
     title: "Wallet | Foodie",

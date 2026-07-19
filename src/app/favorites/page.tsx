@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import FavoritesContainer from "@/container/FavoritesContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Favourites",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Favourites | Foodie",
     description: "Your saved restaurants and favourite dishes, all in one place.",
-    url: "https://foodie.app/favorites",
+    url: "https://foodie-online.vercel.app/favorites",
   },
   twitter: {
     title: "Favourites | Foodie",

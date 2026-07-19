@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import OffersContainer from "@/container/OffersContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Offers & Deals",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Offers & Deals | Foodie",
     description:
       "Discover the best food deals, discount codes, bank offers, and free delivery promotions.",
-    url: "https://foodie.app/offers",
+    url: "https://foodie-online.vercel.app/offers",
   },
   twitter: {
     title: "Offers & Deals | Foodie",

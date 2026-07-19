@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import OrdersContainer from "@/container/OrdersContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "My Orders",
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "My Orders | Foodie",
     description: "Track your active orders in real-time and view your complete order history.",
-    url: "https://foodie.app/orders",
+    url: "https://foodie-online.vercel.app/orders",
   },
   twitter: {
     title: "My Orders | Foodie",

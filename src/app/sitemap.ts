@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 
-const BASE_URL = "https://foodie.app";
+const BASE_URL = "https://foodie-online.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

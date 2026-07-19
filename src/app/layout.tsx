@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://foodie.app"),
+  metadataBase: new URL("https://foodie-online.vercel.app"),
   title: {
     default: "Foodie — Delicious Delivered",
     template: "%s | Foodie",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://foodie.app",
+    url: "https://foodie-online.vercel.app",
     siteName: "Foodie",
     title: "Foodie — Delicious Delivered",
     description:
@@ -82,7 +82,7 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
   name: "Foodie",
-  url: "https://foodie.app",
+  url: "https://foodie-online.vercel.app",
   description:
     "Order food from the best restaurants near you. Fast delivery, exclusive deals, and a huge variety of cuisines.",
   applicationCategory: "FoodOrderingApplication",
@@ -101,7 +101,7 @@ const jsonLd = {
     "Foodie Pro subscription",
     "Live chat support",
   ],
-  screenshot: "https://foodie.app/opengraph-image",
+  screenshot: "https://foodie-online.vercel.app/opengraph-image",
   aggregateRating: {
     "@type": "AggregateRating",
     ratingValue: "4.8",

@@ -1,5 +1,5 @@
-import type { Metadata } from "next";
 import SearchContainer from "@/container/SearchContainer";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Search Restaurants & Dishes",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     title: "Search Restaurants & Dishes | Foodie",
     description:
       "Search thousands of restaurants and dishes near you. Filter by cuisine, price, and more.",
-    url: "https://foodie.app/search",
+    url: "https://foodie-online.vercel.app/search",
   },
   twitter: {
     title: "Search Restaurants & Dishes | Foodie",
