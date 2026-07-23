@@ -25,14 +25,14 @@ export default function AuthArea() {
     <div className="flex items-center gap-2 shrink-0">
       <Link
         href="/login"
-        className="flex items-center gap-1.5 px-4 py-2.5 rounded-2xl text-sm font-semibold text-gray-700 border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 transition-colors"
+        className="flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl text-sm font-semibold text-gray-700 border border-gray-200 bg-white hover:bg-gray-50 hover:border-gray-300 transition-colors"
       >
         <LogIn size={16} />
         Login
       </Link>
       <Link
         href="/register"
-        className="px-4 py-2.5 rounded-2xl text-sm font-bold text-white bg-orange-500 hover:bg-orange-600 transition-colors"
+        className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-2xl text-sm font-bold text-white bg-orange-500 hover:bg-orange-600 transition-colors whitespace-nowrap"
       >
         Sign Up
       </Link>

@@ -233,7 +233,7 @@ export default function SearchContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* Center */}
         <div className="flex-1 min-w-0">
           {/* Search bar + user */}
@@ -453,7 +453,7 @@ export default function SearchContainer() {
         </div>
 
         {/* ── RIGHT: FILTERS ── */}
-        <div className="w-56 shrink-0">
+        <div className="w-full xl:w-56 xl:shrink-0">
           <div className="bg-white rounded-2xl p-4 shadow-sm sticky top-0">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-gray-900 text-base">Filters</h3>

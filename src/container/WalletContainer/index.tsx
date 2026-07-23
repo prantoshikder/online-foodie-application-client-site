@@ -145,7 +145,7 @@ export default function WalletContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* ── MAIN ── */}
         <div className="flex-1 min-w-0">
           {/* Page title */}
@@ -214,7 +214,7 @@ export default function WalletContainer() {
                   <X size={14} className="text-gray-500" />
                 </button>
               </div>
-              <div className="grid grid-cols-4 gap-3 mb-4">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-4">
                 {addAmounts.map((a) => (
                   <button
                     key={a}
@@ -380,7 +380,7 @@ export default function WalletContainer() {
         </div>
 
         {/* ── RIGHT PANEL ── */}
-        <div className="w-64 shrink-0 flex flex-col gap-4">
+        <div className="w-full xl:w-64 xl:shrink-0 flex flex-col gap-4">
           {/* Cashback card */}
           <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-5 text-white relative overflow-hidden">
             <div className="absolute -top-6 -right-6 w-24 h-24 bg-white/10 rounded-full" />

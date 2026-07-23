@@ -80,7 +80,9 @@ export default function UserMenu() {
           <Image src={avatar} alt={name} fill className="object-cover" priority unoptimized />
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-sm font-semibold text-gray-800">Hello, {firstName}</span>
+          <span className="hidden sm:inline text-sm font-semibold text-gray-800">
+            Hello, {firstName}
+          </span>
           <ChevronDown
             size={14}
             className={`text-gray-500 transition-transform duration-200 ${open ? "rotate-180" : ""}`}

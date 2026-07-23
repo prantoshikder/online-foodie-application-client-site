@@ -86,7 +86,7 @@ export default function OrdersContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* Center content */}
         <div className="flex-1 min-w-0">
           {/* Page header */}
@@ -95,7 +95,7 @@ export default function OrdersContainer() {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-6 border-b border-gray-200 mb-6">
+          <div className="flex gap-6 border-b border-gray-200 mb-6 overflow-x-auto">
             {tabs.map((t) => (
               <button
                 key={t}
@@ -309,7 +309,7 @@ export default function OrdersContainer() {
         </div>
 
         {/* Right panel */}
-        <div className="w-64 shrink-0 flex flex-col gap-4">
+        <div className="w-full xl:w-64 xl:shrink-0 flex flex-col gap-4">
           {/* Track Your Order */}
           <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
             <div className="px-4 pt-4 pb-2">

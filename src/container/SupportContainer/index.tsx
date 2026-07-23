@@ -159,7 +159,7 @@ export default function SupportContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* ── MAIN ── */}
         <div className="flex-1 min-w-0">
           {/* Hero header */}
@@ -206,7 +206,7 @@ export default function SupportContainer() {
           </div>
 
           {/* Contact options */}
-          <div className="grid grid-cols-3 gap-3 mb-6">
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
             {contactOptions.map(({ icon: Icon, label, desc, badge, badgeColor, bg, action }) => (
               <button
                 key={label}
@@ -303,7 +303,7 @@ export default function SupportContainer() {
           {/* Help topics */}
           <div className="mb-6">
             <h2 className="font-bold text-gray-900 mb-3">Browse by Topic</h2>
-            <div className="grid grid-cols-3 gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               {helpTopics.map(({ emoji, label, color }) => (
                 <button
                   key={label}
@@ -417,7 +417,7 @@ export default function SupportContainer() {
         </div>
 
         {/* ── RIGHT PANEL ── */}
-        <div className="w-64 shrink-0 flex flex-col gap-4">
+        <div className="w-full xl:w-64 xl:shrink-0 flex flex-col gap-4">
           {/* Support status */}
           <div className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-center justify-between mb-3">

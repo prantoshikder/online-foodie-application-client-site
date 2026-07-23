@@ -137,7 +137,7 @@ export default function LandingPageContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* ── MAIN SCROLL ── */}
         <main className="flex-1 min-w-0">
           {/* Hero Slider */}
@@ -180,7 +180,7 @@ export default function LandingPageContainer() {
                 View all
               </Link>
             </div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3">
               {restaurants.map((r) => (
                 <div
                   key={r.id}
@@ -247,7 +247,7 @@ export default function LandingPageContainer() {
         </main>
 
         {/* ── RIGHT PANEL ── */}
-        <div className="w-64 shrink-0 flex flex-col gap-4 overflow-y-auto">
+        <div className="w-full xl:w-64 xl:shrink-0 flex flex-col gap-4 overflow-y-auto">
           {/* Your Order */}
           <div className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-center justify-between mb-4">

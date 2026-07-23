@@ -131,7 +131,7 @@ export default function FavoritesContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* Center content */}
         <div className="flex-1 min-w-0">
           <div className="flex items-start justify-between mb-5">
@@ -144,7 +144,7 @@ export default function FavoritesContainer() {
           </div>
 
           {/* Tabs */}
-          <div className="flex gap-6 border-b border-gray-200 mb-6">
+          <div className="flex gap-6 border-b border-gray-200 mb-6 overflow-x-auto">
             {tabs.map((t) => (
               <button
                 key={t}
@@ -297,7 +297,7 @@ export default function FavoritesContainer() {
         </div>
 
         {/* Right panel */}
-        <div className="w-64 shrink-0 flex flex-col gap-4">
+        <div className="w-full xl:w-64 xl:shrink-0 flex flex-col gap-4">
           {/* My Collections */}
           <div className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-center justify-between mb-3">

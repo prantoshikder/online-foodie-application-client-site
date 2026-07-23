@@ -45,7 +45,7 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-52 bg-white h-full flex flex-col py-6 px-4 shadow-sm shrink-0">
+    <aside className="hidden lg:flex w-52 bg-white h-full flex-col py-6 px-4 shadow-sm shrink-0">
       {/* Logo */}
       <Link href="/" className="flex items-center gap-2 mb-8 px-2">
         <Image src="/logo.svg" alt="Foodie" width={36} height={36} />

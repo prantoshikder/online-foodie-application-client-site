@@ -77,7 +77,7 @@ export default function ProfileContainer() {
 
   return (
     <DashboardLayout>
-      <div className="flex gap-5 min-h-full">
+      <div className="flex flex-col xl:flex-row gap-5 min-h-full">
         {/* ── MAIN ── */}
         <div className="flex-1 min-w-0">
           <div className="mb-5">
@@ -296,7 +296,7 @@ export default function ProfileContainer() {
         </div>
 
         {/* ── RIGHT PANEL ── */}
-        <div className="w-64 shrink-0 flex flex-col gap-4">
+        <div className="w-full xl:w-64 xl:shrink-0 flex flex-col gap-4">
           {/* Pro card */}
           <div
             className="rounded-2xl p-5 relative overflow-hidden text-white"
