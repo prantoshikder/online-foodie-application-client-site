@@ -7,7 +7,6 @@ import {
   Phone,
   Mail,
   ChevronDown,
-  ChevronUp,
   Search,
   X,
   Send,
@@ -376,7 +375,7 @@ export default function SupportContainer() {
                 >
                   <button
                     onClick={() => setOpen(open === i ? null : i)}
-                    className="w-full flex items-center gap-4 px-5 py-4 text-left"
+                    className="w-full flex items-center gap-4 px-5 py-4 text-left focus:outline-none"
                   >
                     <span
                       className={`shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-full ${
@@ -392,17 +391,25 @@ export default function SupportContainer() {
                       {faq.category}
                     </span>
                     <span className="flex-1 font-semibold text-gray-800 text-sm">{faq.q}</span>
-                    {open === i ? (
-                      <ChevronUp size={17} className="text-orange-500 shrink-0" />
-                    ) : (
-                      <ChevronDown size={17} className="text-gray-400 shrink-0" />
-                    )}
+                    <ChevronDown
+                      size={17}
+                      className={`shrink-0 transition-transform duration-300 ${
+                        open === i ? "rotate-180 text-orange-500" : "text-gray-400"
+                      }`}
+                    />
                   </button>
-                  {open === i && (
-                    <div className="px-5 pb-4 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-3 ml-0">
-                      {faq.a}
+                  {/* Smoothly animate open/close via grid-rows (0fr → 1fr) */}
+                  <div
+                    className={`grid transition-[grid-template-rows] duration-300 ease-in-out ${
+                      open === i ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                    }`}
+                  >
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-4 text-sm text-gray-500 leading-relaxed border-t border-gray-50 pt-3">
+                        {faq.a}
+                      </div>
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
             </div>

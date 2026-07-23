@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
-import { usePathname, useRouter } from "next/navigation";
-import { Loader2 } from "lucide-react";
 import { useUserDetails } from "@/hooks/useUserDetails";
+import { Loader2 } from "lucide-react";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect } from "react";
 import DashboardLayout from "./DashboardLayout";
 
 // Routes only accessible to signed-in users. Everything else is public.
@@ -14,12 +14,6 @@ function isPrivate(pathname: string) {
   return PRIVATE_ROUTES.some((route) => pathname === route || pathname.startsWith(`${route}/`));
 }
 
-/**
- * Central route guard, mounted once in the root layout. It inspects the current
- * path: public routes render immediately, while private routes wait for
- * redux-persist to rehydrate and then either render (signed in) or redirect to
- * /login (signed out). Signed-in users can reach every page — public or private.
- */
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, ready } = useUserDetails();
   const router = useRouter();

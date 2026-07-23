@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
-import AuthArea from "@/components/AuthArea";
-import { Bell, MapPin, MoreVertical, Phone, MessageSquare, Star, Plus } from "lucide-react";
+import { MapPin, MoreVertical, Phone, MessageSquare, Star, Plus } from "lucide-react";
 import Image from "next/image";
 
 const tabs = ["All Orders", "Ongoing", "Completed", "Cancelled"];
@@ -93,13 +92,6 @@ export default function OrdersContainer() {
           {/* Page header */}
           <div className="flex items-center justify-between mb-5">
             <h1 className="text-2xl font-bold text-gray-900">My Orders</h1>
-            <div className="flex items-center gap-3">
-              <button className="relative w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
-                <Bell size={18} className="text-gray-600" />
-                <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
-              </button>
-              <AuthArea />
-            </div>
           </div>
 
           {/* Tabs */}

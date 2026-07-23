@@ -1,11 +1,11 @@
 "use client";
 
 import DashboardLayout from "@/components/DashboardLayout";
-import Header from "@/components/Header";
 import HeroSlider from "@/components/HeroSlider";
 import { Bike, Copy, Crown, Heart, Star } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
 
@@ -140,7 +140,6 @@ export default function LandingPageContainer() {
       <div className="flex gap-5 min-h-full">
         {/* ── MAIN SCROLL ── */}
         <main className="flex-1 min-w-0">
-          <Header />
           {/* Hero Slider */}
           <HeroSlider />
 
@@ -148,9 +147,12 @@ export default function LandingPageContainer() {
           <div className="mb-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-gray-900 text-base">Top Categories</h2>
-              <button className="text-orange-500 text-sm font-semibold hover:underline">
+              <Link
+                href="/all-category"
+                className="text-orange-500 text-sm font-semibold hover:underline"
+              >
                 View all
-              </button>
+              </Link>
             </div>
             <div className="flex gap-3 overflow-x-auto pb-1">
               {categories.map(({ emoji, label, bg }) => (
@@ -171,9 +173,12 @@ export default function LandingPageContainer() {
           <div className="mb-6">
             <div className="flex items-center justify-between mb-4">
               <h2 className="font-bold text-gray-900 text-base">Popular Restaurants</h2>
-              <button className="text-orange-500 text-sm font-semibold hover:underline">
+              <Link
+                href="/search"
+                className="text-orange-500 text-sm font-semibold hover:underline"
+              >
                 View all
-              </button>
+              </Link>
             </div>
             <div className="grid grid-cols-4 gap-3">
               {restaurants.map((r) => (
@@ -247,9 +252,12 @@ export default function LandingPageContainer() {
           <div className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-bold text-gray-900 text-base">Your Order</h3>
-              <button className="text-orange-500 text-xs font-semibold hover:underline">
+              <Link
+                href="/orders"
+                className="text-orange-500 text-xs font-semibold hover:underline"
+              >
                 View all
-              </button>
+              </Link>
             </div>
 
             <div className="flex flex-col gap-3 mb-4">
@@ -302,9 +310,12 @@ export default function LandingPageContainer() {
           <div className="bg-white rounded-2xl p-4 shadow-sm">
             <div className="flex items-center justify-between mb-3">
               <h3 className="font-bold text-gray-900 text-base">Exclusive Offers</h3>
-              <button className="text-orange-500 text-xs font-semibold hover:underline">
+              <Link
+                href="/offers"
+                className="text-orange-500 text-xs font-semibold hover:underline"
+              >
                 View all
-              </button>
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               {exclusiveOffers.map((o) => (

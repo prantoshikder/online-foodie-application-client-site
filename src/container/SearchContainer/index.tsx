@@ -1,17 +1,7 @@
 "use client";
 
-import AuthArea from "@/components/AuthArea";
 import DashboardLayout from "@/components/DashboardLayout";
-import {
-  Bell,
-  ChevronDown,
-  ChevronRight,
-  Heart,
-  Search,
-  SlidersHorizontal,
-  Star,
-  X,
-} from "lucide-react";
+import { ChevronDown, ChevronRight, Heart, Search, SlidersHorizontal, Star, X } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -269,11 +259,6 @@ export default function SearchContainer() {
                 </button>
               )}
             </div>
-            <button className="relative w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 shrink-0">
-              <Bell size={18} className="text-gray-600" />
-              <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
-            </button>
-            <AuthArea />
           </div>
 
           {/* Results header */}

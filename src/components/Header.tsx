@@ -1,12 +1,13 @@
 "use client";
 
-import { Bell, ChevronDown, MapPin, Search } from "lucide-react";
+import Link from "next/link";
+import { Bell, ChevronDown, Gift, MapPin, Search } from "lucide-react";
 import AuthArea from "./AuthArea";
 
 export default function Header() {
   return (
-    <header className="flex items-center gap-4 mb-6">
-      {/* Location */}
+    <header className="flex items-center gap-3">
+      {/* Location — primary control for a delivery app */}
       <button className="flex items-center gap-1.5 text-sm shrink-0">
         <MapPin size={16} className="text-orange-500" />
         <div className="text-left">
@@ -18,19 +19,33 @@ export default function Header() {
         </div>
       </button>
 
-      {/* Search */}
-      <div className="flex-1 relative">
-        <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400" />
-        <input
-          type="text"
-          placeholder="Search for dishes, restaurants..."
-          className="w-full bg-white border border-gray-100 rounded-2xl pl-10 pr-4 py-3 text-sm text-gray-600 placeholder-gray-400 focus:outline-none focus:border-orange-300 shadow-sm"
-        />
-      </div>
+      {/* Push the action cluster to the right now that the search field is gone */}
+      <div className="flex-1" />
 
-      {/* Bell */}
-      <button className="relative w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 hover:bg-gray-50 transition-colors">
-        <Bell size={18} className="text-gray-600" />
+      {/* Search — compact icon that opens the dedicated search page */}
+      <Link
+        href="/search"
+        aria-label="Search"
+        className="w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 text-gray-600 hover:bg-gray-50 hover:text-orange-500 transition-colors"
+      >
+        <Search size={18} />
+      </Link>
+
+      {/* Offers quick link */}
+      <Link
+        href="/offers"
+        aria-label="Offers"
+        className="w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 text-gray-600 hover:bg-gray-50 hover:text-orange-500 transition-colors"
+      >
+        <Gift size={18} />
+      </Link>
+
+      {/* Notifications */}
+      <button
+        aria-label="Notifications"
+        className="relative w-11 h-11 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100 text-gray-600 hover:bg-gray-50 transition-colors"
+      >
+        <Bell size={18} />
         <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
       </button>
 

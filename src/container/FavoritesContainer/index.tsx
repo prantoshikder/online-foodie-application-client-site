@@ -2,8 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
-import { Bell, ChevronDown, ChevronRight, Heart, MoreVertical, Plus, Star } from "lucide-react";
-import AuthArea from "@/components/AuthArea";
+import { ChevronDown, ChevronRight, Heart, MoreVertical, Plus, Star } from "lucide-react";
 import Image from "next/image";
 
 const tabs = ["Restaurants", "Dishes"];
@@ -141,13 +140,6 @@ export default function FavoritesContainer() {
               <p className="text-gray-400 text-sm mt-0.5">
                 Save your favorite restaurants and dishes for quick access.
               </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <button className="relative w-10 h-10 bg-white rounded-2xl flex items-center justify-center shadow-sm border border-gray-100">
-                <Bell size={18} className="text-gray-600" />
-                <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
-              </button>
-              <AuthArea />
             </div>
           </div>
 
