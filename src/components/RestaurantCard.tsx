@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Heart, Star } from "lucide-react";
 import Image from "next/image";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
 
 interface Restaurant {
   name: string;
@@ -16,6 +17,7 @@ interface Restaurant {
 
 export default function RestaurantCard({ restaurant }: { restaurant: Restaurant }) {
   const [liked, setLiked] = useState(false);
+  const requireAuth = useRequireAuth();
 
   return (
     <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow cursor-pointer">
@@ -31,7 +33,7 @@ export default function RestaurantCard({ restaurant }: { restaurant: Restaurant 
           {restaurant.discount}
         </span>
         <button
-          onClick={() => setLiked(!liked)}
+          onClick={() => requireAuth(() => setLiked(!liked))}
           className="absolute top-3 right-3 w-8 h-8 bg-white rounded-full flex items-center justify-center shadow-sm"
         >
           <Heart size={16} className={liked ? "fill-red-500 text-red-500" : "text-gray-400"} />

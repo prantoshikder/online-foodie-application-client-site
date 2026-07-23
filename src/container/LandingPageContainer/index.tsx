@@ -6,6 +6,8 @@ import HeroSlider from "@/components/HeroSlider";
 import { Bike, Copy, Crown, Heart, Star } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useRequireAuth } from "@/hooks/useRequireAuth";
 
 /* ─── DATA ──────────────────────────────────────────────── */
 
@@ -118,9 +120,14 @@ const total = subtotal + delivery;
 export default function LandingPageContainer() {
   const [likedRest, setLikedRest] = useState<number[]>([]);
   const [copiedCode, setCopiedCode] = useState<string | null>(null);
+  const requireAuth = useRequireAuth();
+  const router = useRouter();
 
+  // Favouriting a restaurant is an account action — prompt login if signed out.
   const toggleLike = (id: number) =>
-    setLikedRest((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]));
+    requireAuth(() =>
+      setLikedRest((p) => (p.includes(id) ? p.filter((x) => x !== id) : [...p, id]))
+    );
 
   const copyCode = (code: string) => {
     navigator.clipboard.writeText(code).catch(() => {});
@@ -282,7 +289,10 @@ export default function LandingPageContainer() {
               <span>${total.toFixed(2)}</span>
             </div>
 
-            <button className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm">
+            <button
+              onClick={() => requireAuth(() => router.push("/orders"))}
+              className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 transition-colors text-sm"
+            >
               <Bike size={16} />
               Track Order
             </button>

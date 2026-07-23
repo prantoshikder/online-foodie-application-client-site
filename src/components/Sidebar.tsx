@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Home,
   Search,
@@ -13,22 +13,36 @@ import {
   User,
   Headphones,
   LogOut,
+  LogIn,
   Gift,
 } from "lucide-react";
+import { useAuth } from "@/redux/useAuth";
 
+// `protected` items are only shown once the user is signed in.
 const navItems = [
-  { icon: Home, label: "Home", href: "/" },
-  { icon: Search, label: "Search", href: "/search" },
-  { icon: ShoppingBag, label: "Orders", href: "/orders" },
-  { icon: Heart, label: "Favorites", href: "/favorites" },
-  { icon: Tag, label: "Offers", href: "/offers" },
-  { icon: Wallet, label: "Wallet", href: "/wallet" },
-  { icon: User, label: "Profile", href: "/profile" },
-  { icon: Headphones, label: "Support", href: "/support" },
+  { icon: Home, label: "Home", href: "/", protected: false },
+  { icon: Search, label: "Search", href: "/search", protected: false },
+  { icon: ShoppingBag, label: "Orders", href: "/orders", protected: true },
+  { icon: Heart, label: "Favorites", href: "/favorites", protected: true },
+  { icon: Tag, label: "Offers", href: "/offers", protected: false },
+  { icon: Wallet, label: "Wallet", href: "/wallet", protected: true },
+  { icon: User, label: "Profile", href: "/profile", protected: true },
+  { icon: Headphones, label: "Support", href: "/support", protected: false },
 ];
 
 export default function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { isAuthenticated, ready, logout } = useAuth();
+
+  // Until rehydration completes, assume signed-out so protected links don't
+  // flash in and then disappear.
+  const visibleItems = navItems.filter((item) => !item.protected || (ready && isAuthenticated));
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
 
   return (
     <aside className="w-52 bg-white h-full flex flex-col py-6 px-4 shadow-sm shrink-0">
@@ -43,7 +57,7 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="flex flex-col gap-1 flex-1">
-        {navItems.map(({ icon: Icon, label, href }) => {
+        {visibleItems.map(({ icon: Icon, label, href }) => {
           const active = pathname === href;
           return (
             <Link
@@ -76,11 +90,24 @@ export default function Sidebar() {
         </button>
       </div>
 
-      {/* Logout */}
-      <button className="flex items-center gap-3 px-3 py-2.5 text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors">
-        <LogOut size={18} />
-        Logout
-      </button>
+      {/* Auth action: Logout when signed in, otherwise a Login link */}
+      {ready && isAuthenticated ? (
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-3 py-2.5 text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors"
+        >
+          <LogOut size={18} />
+          Logout
+        </button>
+      ) : (
+        <Link
+          href="/login"
+          className="flex items-center gap-3 px-3 py-2.5 text-gray-400 hover:text-orange-500 text-sm font-medium transition-colors"
+        >
+          <LogIn size={18} />
+          Login
+        </Link>
+      )}
     </aside>
   );
 }

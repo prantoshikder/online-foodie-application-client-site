@@ -1,19 +1,19 @@
 "use client";
 
-import { useState } from "react";
+import AuthArea from "@/components/AuthArea";
 import DashboardLayout from "@/components/DashboardLayout";
-import Image from "next/image";
 import {
-  Search,
-  X,
   Bell,
   ChevronDown,
   ChevronRight,
   Heart,
-  Star,
+  Search,
   SlidersHorizontal,
+  Star,
+  X,
 } from "lucide-react";
-import UserMenu from "@/components/UserMenu";
+import Image from "next/image";
+import { useState } from "react";
 
 /* ─── DATA ─────────────────────────────────────────────── */
 
@@ -273,7 +273,7 @@ export default function SearchContainer() {
               <Bell size={18} className="text-gray-600" />
               <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
             </button>
-            <UserMenu />
+            <AuthArea />
           </div>
 
           {/* Results header */}
@@ -440,7 +440,7 @@ export default function SearchContainer() {
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                         sizes="208px"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                      <div className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent" />
                       <div className="absolute bottom-3 left-3">
                         <div className="text-white font-bold text-sm leading-tight">{c.name}</div>
                         <div className="text-white/80 text-xs mt-0.5">{c.items} Items</div>

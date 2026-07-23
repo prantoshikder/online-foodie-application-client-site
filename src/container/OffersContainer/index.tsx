@@ -15,7 +15,7 @@ import {
   Tag,
   Sparkles,
 } from "lucide-react";
-import UserMenu from "@/components/UserMenu";
+import AuthArea from "@/components/AuthArea";
 
 const tabs = ["All Offers", "Bank Offers", "Partner Offers", "Free Delivery"];
 
@@ -531,7 +531,7 @@ export default function OffersContainer() {
                 <Bell size={18} className="text-gray-600" />
                 <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
               </button>
-              <UserMenu />
+              <AuthArea />
             </div>
           </div>
 

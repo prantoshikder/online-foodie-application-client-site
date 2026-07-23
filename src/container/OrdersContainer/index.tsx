@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import DashboardLayout from "@/components/DashboardLayout";
-import UserMenu from "@/components/UserMenu";
+import AuthArea from "@/components/AuthArea";
 import { Bell, MapPin, MoreVertical, Phone, MessageSquare, Star, Plus } from "lucide-react";
 import Image from "next/image";
 
@@ -98,7 +98,7 @@ export default function OrdersContainer() {
                 <Bell size={18} className="text-gray-600" />
                 <span className="absolute top-2 right-2.5 w-2 h-2 bg-orange-500 rounded-full" />
               </button>
-              <UserMenu />
+              <AuthArea />
             </div>
           </div>
 
