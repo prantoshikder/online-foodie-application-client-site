@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { Bell, ChevronDown, LogIn, MapPin, Search } from "lucide-react";
 import UserMenu from "./UserMenu";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/redux/useAuth";
 
 function AuthArea() {
   const { isAuthenticated, ready } = useAuth();

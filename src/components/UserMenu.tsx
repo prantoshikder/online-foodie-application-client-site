@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/redux/useAuth";
 
 const menuItems = [
   { icon: User, label: "My Profile", href: "/profile", color: "text-blue-500", bg: "bg-blue-50" },

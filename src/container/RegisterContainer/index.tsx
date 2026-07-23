@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { User, Mail, Phone, Lock, Eye, EyeOff, ArrowRight, Check, Loader2 } from "lucide-react";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/redux/useAuth";
 
 type Method = "email" | "phone";
 

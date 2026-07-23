@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useAuth } from "@/context/AuthContext";
+import { useAuth } from "@/redux/useAuth";
 
 /**
  * Gate sensitive actions (confirm order, make payment) behind authentication.
