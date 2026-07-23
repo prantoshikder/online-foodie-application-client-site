@@ -1,5 +1,4 @@
 import OrdersContainer from "@/container/OrdersContainer";
-import AuthGuard from "@/components/AuthGuard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,9 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return (
-    <AuthGuard>
-      <OrdersContainer />
-    </AuthGuard>
-  );
+  return <OrdersContainer />;
 }

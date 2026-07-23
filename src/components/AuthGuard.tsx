@@ -6,23 +6,37 @@ import { Loader2 } from "lucide-react";
 import { useUserDetails } from "@/hooks/useUserDetails";
 import DashboardLayout from "./DashboardLayout";
 
+// Routes only accessible to signed-in users. Everything else is public.
+// Add a path here to gate it — no per-page wiring required.
+const PRIVATE_ROUTES = ["/orders", "/profile", "/wallet", "/favorites"];
+
+function isPrivate(pathname: string) {
+  return PRIVATE_ROUTES.some((route) => pathname === route || pathname.startsWith(`${route}/`));
+}
+
 /**
- * Page-level auth gate for account-only routes (orders, profile, wallet,
- * favorites). Renders the dashboard shell with a spinner until redux-persist
- * has rehydrated, then either shows the protected content (signed in) or
- * redirects to /login with a `redirect` back to the current page.
+ * Central route guard, mounted once in the root layout. It inspects the current
+ * path: public routes render immediately, while private routes wait for
+ * redux-persist to rehydrate and then either render (signed in) or redirect to
+ * /login (signed out). Signed-in users can reach every page — public or private.
  */
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, ready } = useUserDetails();
   const router = useRouter();
-  const pathname = usePathname();
+  const pathname = usePathname() || "/";
+  const guarded = isPrivate(pathname);
 
   useEffect(() => {
-    if (ready && !isAuthenticated) {
-      router.replace(`/login?redirect=${encodeURIComponent(pathname || "/")}`);
+    if (guarded && ready && !isAuthenticated) {
+      router.replace(`/login?redirect=${encodeURIComponent(pathname)}`);
     }
-  }, [ready, isAuthenticated, pathname, router]);
+  }, [guarded, ready, isAuthenticated, pathname, router]);
 
+  // Public routes are always accessible.
+  if (!guarded) return <>{children}</>;
+
+  // Private route: show the dashboard shell + spinner until we know the user is
+  // signed in; otherwise the effect above redirects to /login.
   if (!ready || !isAuthenticated) {
     return (
       <DashboardLayout>

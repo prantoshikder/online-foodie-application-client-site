@@ -1,5 +1,4 @@
 import WalletContainer from "@/container/WalletContainer";
-import AuthGuard from "@/components/AuthGuard";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -18,9 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return (
-    <AuthGuard>
-      <WalletContainer />
-    </AuthGuard>
-  );
+  return <WalletContainer />;
 }

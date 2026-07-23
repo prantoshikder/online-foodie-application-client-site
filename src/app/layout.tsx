@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import ReduxProvider from "@/redux/ReduxProvider";
+import AuthGuard from "@/components/AuthGuard";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://foodie-online.vercel.app"),
@@ -124,7 +125,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <ReduxProvider>{children}</ReduxProvider>
+        <ReduxProvider>
+          <AuthGuard>{children}</AuthGuard>
+        </ReduxProvider>
       </body>
     </html>
   );
