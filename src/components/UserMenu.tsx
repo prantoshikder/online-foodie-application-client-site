@@ -16,7 +16,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useAuth } from "@/redux/useAuth";
+import { useUserDetails } from "@/hooks/useUserDetails";
 
 const menuItems = [
   { icon: User, label: "My Profile", href: "/profile", color: "text-blue-500", bg: "bg-blue-50" },
@@ -48,7 +48,7 @@ const menuItems = [
 export default function UserMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const { user, logout } = useAuth();
+  const { user, logout } = useUserDetails();
   const router = useRouter();
 
   const name = user?.name ?? "Guest";

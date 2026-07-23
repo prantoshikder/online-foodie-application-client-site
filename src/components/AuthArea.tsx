@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { LogIn } from "lucide-react";
 import UserMenu from "./UserMenu";
-import { useAuth } from "@/redux/useAuth";
+import { useUserDetails } from "@/hooks/useUserDetails";
 
 /**
  * Auth-aware account control. Renders the `UserMenu` (avatar + dropdown) when
@@ -12,7 +12,7 @@ import { useAuth } from "@/redux/useAuth";
  * visitors never see the "Hello, Guest" menu.
  */
 export default function AuthArea() {
-  const { isAuthenticated, ready } = useAuth();
+  const { isAuthenticated, ready } = useUserDetails();
 
   // Avoid a hydration flash: reserve space until we know the auth state.
   if (!ready) {

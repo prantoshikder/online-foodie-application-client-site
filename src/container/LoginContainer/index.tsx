@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Mail, Phone, Lock, Eye, EyeOff, ArrowRight, Check, Loader2 } from "lucide-react";
-import { useAuth } from "@/redux/useAuth";
+import { useUserDetails } from "@/hooks/useUserDetails";
 
 type Method = "email" | "phone";
 
@@ -22,7 +22,7 @@ export default function LoginContainer() {
   const [showPass, setShowPass] = useState(false);
   const [remember, setRemember] = useState(true);
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { login } = useUserDetails();
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent) => {

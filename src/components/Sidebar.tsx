@@ -16,7 +16,7 @@ import {
   LogIn,
   Gift,
 } from "lucide-react";
-import { useAuth } from "@/redux/useAuth";
+import { useUserDetails } from "@/hooks/useUserDetails";
 
 // `protected` items are only shown once the user is signed in.
 const navItems = [
@@ -33,7 +33,7 @@ const navItems = [
 export default function Sidebar() {
   const pathname = usePathname();
   const router = useRouter();
-  const { isAuthenticated, ready, logout } = useAuth();
+  const { isAuthenticated, ready, logout } = useUserDetails();
 
   // Until rehydration completes, assume signed-out so protected links don't
   // flash in and then disappear.

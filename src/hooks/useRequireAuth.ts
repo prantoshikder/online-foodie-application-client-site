@@ -2,7 +2,7 @@
 
 import { useCallback } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { useAuth } from "@/redux/useAuth";
+import { useUserDetails } from "@/hooks/useUserDetails";
 
 /**
  * Gate sensitive actions (confirm order, make payment) behind authentication.
@@ -15,7 +15,7 @@ import { useAuth } from "@/redux/useAuth";
  * to /login with a redirect back to the current page.
  */
 export function useRequireAuth() {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useUserDetails();
   const router = useRouter();
   const pathname = usePathname();
 

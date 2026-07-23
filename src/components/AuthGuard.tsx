@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
-import { useAuth } from "@/redux/useAuth";
+import { useUserDetails } from "@/hooks/useUserDetails";
 import DashboardLayout from "./DashboardLayout";
 
 /**
@@ -13,7 +13,7 @@ import DashboardLayout from "./DashboardLayout";
  * redirects to /login with a `redirect` back to the current page.
  */
 export default function AuthGuard({ children }: { children: React.ReactNode }) {
-  const { isAuthenticated, ready } = useAuth();
+  const { isAuthenticated, ready } = useUserDetails();
   const router = useRouter();
   const pathname = usePathname();
 
