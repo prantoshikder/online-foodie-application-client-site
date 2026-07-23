@@ -3,7 +3,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { User, Mail, Lock, Eye, EyeOff, ArrowRight, Check, Loader2 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { User, Mail, Phone, Lock, Eye, EyeOff, ArrowRight, Check, Loader2 } from "lucide-react";
+import { useAuth } from "@/context/AuthContext";
+
+type Method = "email" | "phone";
 
 const perks = [
   { emoji: "🎁", text: "$10 off your very first order" },
@@ -30,11 +34,14 @@ const strengthMeta = [
 
 export default function RegisterContainer() {
   const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [method, setMethod] = useState<Method>("email");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
   const [agree, setAgree] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { login } = useAuth();
+  const router = useRouter();
 
   const strength = strengthOf(password);
   const meta = strengthMeta[strength];
@@ -43,7 +50,13 @@ export default function RegisterContainer() {
     e.preventDefault();
     if (!agree) return;
     setLoading(true);
-    setTimeout(() => setLoading(false), 1500);
+    // Demo auth — no backend. Sign the new user straight in with whichever
+    // contact method (email or phone) they registered with.
+    setTimeout(() => {
+      login({ name: name.trim() || "Foodie", [method]: identifier });
+      const redirect = new URLSearchParams(window.location.search).get("redirect");
+      router.push(redirect || "/");
+    }, 1200);
   };
 
   return (
@@ -155,7 +168,7 @@ export default function RegisterContainer() {
 
           <div className="flex items-center gap-3 mb-6">
             <div className="h-px bg-gray-200 flex-1" />
-            <span className="text-gray-400 text-xs">or sign up with email</span>
+            <span className="text-gray-400 text-xs">or sign up with</span>
             <div className="h-px bg-gray-200 flex-1" />
           </div>
 
@@ -180,21 +193,39 @@ export default function RegisterContainer() {
 
             <div>
               <label className="block text-xs font-semibold text-gray-500 mb-1.5">
-                Email Address
+                {method === "email" ? "Email Address" : "Phone Number"}
               </label>
               <div className="relative">
-                <Mail
-                  size={16}
-                  className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"
-                />
+                {method === "email" ? (
+                  <Mail
+                    size={16}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+                ) : (
+                  <Phone
+                    size={16}
+                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400"
+                  />
+                )}
                 <input
-                  type="email"
+                  type={method === "email" ? "email" : "tel"}
                   required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-4 py-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:bg-white transition-colors"
+                  value={identifier}
+                  onChange={(e) => setIdentifier(e.target.value)}
+                  placeholder={method === "email" ? "you@example.com" : "+1 555 000 1234"}
+                  className="w-full bg-gray-50 border border-gray-200 rounded-xl pl-10 pr-11 py-3 text-sm text-gray-700 placeholder:text-gray-400 focus:outline-none focus:border-orange-400 focus:bg-white transition-colors"
                 />
+                <button
+                  type="button"
+                  onClick={() => {
+                    setMethod((m) => (m === "email" ? "phone" : "email"));
+                    setIdentifier("");
+                  }}
+                  title={method === "email" ? "Use phone number instead" : "Use email instead"}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-orange-500 transition-colors"
+                >
+                  {method === "email" ? <Phone size={16} /> : <Mail size={16} />}
+                </button>
               </div>
             </div>
 

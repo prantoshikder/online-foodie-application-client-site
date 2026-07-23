@@ -15,6 +15,8 @@ import {
   X,
 } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
 
 const menuItems = [
   { icon: User, label: "My Profile", href: "/profile", color: "text-blue-500", bg: "bg-blue-50" },
@@ -46,6 +48,19 @@ const menuItems = [
 export default function UserMenu() {
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { user, logout } = useAuth();
+  const router = useRouter();
+
+  const name = user?.name ?? "Guest";
+  const email = user?.email ?? user?.phone ?? "";
+  const firstName = name.split(" ")[0];
+  const avatar = `https://api.dicebear.com/7.x/avataaars/svg?seed=${encodeURIComponent(name)}`;
+
+  const handleLogout = () => {
+    setOpen(false);
+    logout();
+    router.push("/");
+  };
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -62,17 +77,10 @@ export default function UserMenu() {
         className={`flex items-center gap-2 px-3 py-2 rounded-2xl border transition-colors ${open ? "bg-orange-50 border-orange-200" : "border-transparent hover:bg-gray-100"}`}
       >
         <div className="relative w-9 h-9 rounded-full overflow-hidden bg-gray-200 ring-2 ring-orange-200">
-          <Image
-            src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
-            alt="Arjun"
-            fill
-            className="object-cover"
-            priority
-            unoptimized
-          />
+          <Image src={avatar} alt={name} fill className="object-cover" priority unoptimized />
         </div>
         <div className="flex items-center gap-1">
-          <span className="text-sm font-semibold text-gray-800">Hello, Arjun</span>
+          <span className="text-sm font-semibold text-gray-800">Hello, {firstName}</span>
           <ChevronDown
             size={14}
             className={`text-gray-500 transition-transform duration-200 ${open ? "rotate-180" : ""}`}
@@ -96,8 +104,8 @@ export default function UserMenu() {
             <div className="flex items-center gap-3">
               <div className="relative w-12 h-12 rounded-xl overflow-hidden ring-2 ring-white/40">
                 <Image
-                  src="https://api.dicebear.com/7.x/avataaars/svg?seed=Arjun"
-                  alt="Arjun"
+                  src={avatar}
+                  alt={name}
                   fill
                   className="object-cover bg-orange-200"
                   priority
@@ -105,8 +113,8 @@ export default function UserMenu() {
                 />
               </div>
               <div>
-                <div className="font-bold text-white text-sm">Arjun Sharma</div>
-                <div className="text-orange-100 text-xs">arjun@email.com</div>
+                <div className="font-bold text-white text-sm">{name}</div>
+                <div className="text-orange-100 text-xs">{email}</div>
                 <div className="flex items-center gap-1 mt-1">
                   <Crown size={11} className="text-yellow-300" />
                   <span className="text-yellow-200 text-[11px] font-semibold">Foodie Pro</span>
@@ -158,7 +166,10 @@ export default function UserMenu() {
           {/* Logout */}
           <div className="px-2 pb-2">
             <div className="border-t border-gray-100 mb-2" />
-            <button className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-50 transition-colors group text-left">
+            <button
+              onClick={handleLogout}
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-red-50 transition-colors group text-left"
+            >
               <div className="w-8 h-8 bg-red-50 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-red-100 transition-colors">
                 <LogOut size={15} className="text-red-500" />
               </div>
